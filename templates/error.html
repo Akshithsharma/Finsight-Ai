@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block title %}{{ code }} — FinSight AI{% endblock %}{% block content %}<div class="panel error-panel"><div class="error-code">{{ code }}</div><h1>Something went off track</h1><p>{{ message }}</p><a class="btn btn-primary" href="{{ url_for('dashboard') if current_user() else url_for('index') }}">Go back →</a></div>{% endblock %}

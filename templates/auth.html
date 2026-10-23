@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}{{ 'Create account' if mode=='register' else 'Sign in' }} — FinSight AI{% endblock %}
+{% block public_content %}
+<div class="auth-page"><a class="brand auth-brand" href="/"><span class="brand-mark">F</span><span>FinSight<span class="brand-ai"> AI</span></span></a><div class="auth-card"><div class="eyebrow">YOUR FINANCIAL CLARITY</div><h1>{{ 'Create your account' if mode=='register' else 'Welcome back' }}</h1><p>{{ 'Start tracking your money in a few steps.' if mode=='register' else 'Sign in to continue to your dashboard.' }}</p>
+<form method="post" class="form-stack">
+{% if mode=='register' %}<label>Full name<input name="name" placeholder="e.g. Alex Sharma" required minlength="2" autocomplete="name"></label>{% endif %}
+<label>Email address<input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label>
+<label>Password<input type="password" name="password" placeholder="{{ 'At least 8 characters' if mode=='register' else 'Your password' }}" required {% if mode=='register' %}minlength="8"{% endif %} autocomplete="{{ 'new-password' if mode=='register' else 'current-password' }}"></label>
+<button class="btn btn-primary btn-full" type="submit">{{ 'Create account' if mode=='register' else 'Sign in' }} <span>→</span></button>
+</form><div class="auth-switch">{% if mode=='register' %}Already have an account? <a href="{{ url_for('login') }}">Sign in</a>{% else %}New to FinSight? <a href="{{ url_for('register') }}">Create account</a>{% endif %}</div></div><div class="auth-note">Your finance records are private to your account. Use a unique password.</div></div>
+{% endblock %}
